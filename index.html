@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Website</title>
+  <style>
+    .logo-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+    .logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#38bdf8,#60a5fa,#ffffff);color:#0b1f4d;font-weight:900;font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(56,189,248,.45)}
+    .watermark{position:fixed;right:3%;top:35%;font-size:140px;font-weight:900;opacity:.05;pointer-events:none;z-index:0;color:#93c5fd;transform:rotate(-12deg)}
+    header,section,footer{position:relative;z-index:1}
+
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #0b1f4d;
+      color: #e2e8f0;
+    }
+    header {
+      background: rgba(15,23,42,.9);
+      padding: 20px;
+      text-align: center;
+      position: sticky;top:0;backdrop-filter: blur(8px);
+    }
+    nav a {
+      margin: 0 15px;
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover{color:#fff}
+    section {padding: 50px 20px;max-width: 1000px;margin: auto;}
+    .hero{padding:80px 20px;text-align:center}
+    .hero h1{font-size:3rem;margin-bottom:10px}
+    .hero p{font-size:1.1rem;opacity:.9}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .card {
+      background: linear-gradient(145deg, rgba(147,197,253,.22), rgba(15,40,80,.9));
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 16px;
+      box-shadow:0 10px 30px rgba(0,0,0,.25);
+      transition:.3s ease;
+    }
+    .card:hover{transform:translateY(-6px)}
+    footer {text-align: center;padding: 20px;background: linear-gradient(90deg,#60a5fa,#0b1f4d);}
+    button {
+      background: linear-gradient(90deg,#38bdf8,#22c55e);
+      color:#00111a;
+      border: none;padding: 12px 18px;border-radius: 10px;cursor: pointer;font-weight:bold;
+    }
+    input, textarea {
+      width: 100%;padding: 12px;margin: 10px 0;border-radius: 10px;border: none;
+    }
+  </style>
+</head>
+<body>
+<div class="watermark">RR</div>
+<section class="hero">
+  <h1>Rishi's Digital Universe</h1>
+  <p>Build. Learn. Create. Share ideas, blogs, projects and goals in one place.</p>
+</section>
+
+<header>
+  <div class="logo-wrap"><div class="logo">RR</div><h1>Rishi's World</h1></div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#blog">Blog</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#gallery">Photos</a>
+    <a href="#editor">Editor</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>Hello! I'm Rishi, a Computer Science student interested in AI, Gaming, and Design.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">🎮 Gaming Technology Ideas</div>
+    <div class="card">🤖 AI / ML Experiments</div>
+    <div class="card">🎨 Design Portfolio</div>
+    <div class="card">🚀 Future Startup Plans</div>
+  </div>
+</section>
+
+<section id="achievements">
+  <h2>Achievements</h2>
+  <div class="grid">
+    <div class="card">🏆 Academic Excellence Award</div>
+    <div class="card">💻 Built Personal Website</div>
+    <div class="card">🎮 Gaming Tech Learner</div>
+    <div class="card">🚀 Future Innovator Goals</div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Photo Gallery</h2>
+  <div class="grid">
+    <div class="card"><img src="https://via.placeholder.com/300x220?text=Your+Photo+1" style="width:100%;border-radius:12px;"><p>Profile Photo</p></div>
+    <div class="card"><img src="https://via.placeholder.com/300x220?text=Your+Photo+2" style="width:100%;border-radius:12px;"><p>Achievement Moment</p></div>
+    <div class="card"><img src="https://via.placeholder.com/300x220?text=Your+Photo+3" style="width:100%;border-radius:12px;"><p>Creative Work</p></div>
+  </div>
+</section>
+
+<section id="blog">
+  <h2>Blog</h2>
+  <div id="blogPosts"></div>
+
+  <h3>Add New Blog</h3>
+  <input type="text" id="title" placeholder="Title">
+  <textarea id="content" placeholder="Write your blog..."></textarea>
+  <button onclick="addPost()">Post</button>
+</section>
+
+<section id="editor">
+  <h2>Live Page Editor</h2>
+  <div class="card">
+    <p>Edit hero title or subtitle instantly:</p>
+    <input type="text" id="heroTitleInput" placeholder="New hero title">
+    <input type="text" id="heroTextInput" placeholder="New hero subtitle">
+    <button onclick="updateHero()">Update Screen</button>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <p>Email: your@email.com</p>
+    <p>Instagram: @yourhandle</p>
+    <p>Open to collaborations & opportunities.</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Rishi | Built with ❤️</p>
+</footer>
+
+<script>
+  function updateHero(){
+    const t=document.getElementById('heroTitleInput').value;
+    const p=document.getElementById('heroTextInput').value;
+    if(t) document.querySelector('.hero h1').innerText=t;
+    if(p) document.querySelector('.hero p').innerText=p;
+  }
+
+  function addPost() {
+    const title = document.getElementById('title').value;
+    const content = document.getElementById('content').value;
+
+    if (!title || !content) {
+      alert('Please fill all fields');
+      return;
+    }
+
+    const post = document.createElement('div');
+    post.className = 'card';
+    post.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+
+    document.getElementById('blogPosts').prepend(post);
+
+    document.getElementById('title').value = '';
+    document.getElementById('content').value = '';
+  }
+</script>
+
+</body>
+</html>
+
